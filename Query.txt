@@ -1,0 +1,14 @@
+SELECT  CUSTOMERS.name
+FROM CUSTOMERS
+JOIN PRODUCTS
+ON
+CUSTOMERS.cust_id = (SELECT PRODUCTS.cust_id
+                     FROM PRODUCTS
+                     WHERE PRODUCTS.product='milk'
+
+
+		     EXCEPT
+
+		    SELECT cust_id
+                    FROM PRODUCTS
+                    WHERE (PRODUCTS.product='creme') AND (DATEPART(month,GETDATE())));
