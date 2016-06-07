@@ -1,0 +1,42 @@
+using System;
+using System.Diagnostics.Contracts;
+
+namespace TriangleSquare
+{ /// <summary>
+  /// Этот класс содержит функцию для вычисления площади треугольника
+ /// </summary>
+   
+    public static class TriangleSquare
+    {
+       
+        const  double coefficient= 0.5;
+        const double maxValue = Double.MaxValue;
+        /// <summary>
+        /// Метод вычисления площади
+        /// </summary>
+        /// <param name="a">Одно из значений катетов</param>
+        /// <param name="b">Одно из значений катетов</param>
+        /// <param name="square"> Значение площади</param>
+        
+        public static void TriangleSquareCalculate (double a,  double b, double c, out double square)
+        {
+            //проверяем  входное значение на соответствие 
+            Contract.Requires( a > 0, "This value cann't be 0 or negative");
+            Contract.Requires(b > 0, "This value cann't be 0 or negative");
+            Contract.Requires(c > 0, "This value cann't be 0 or negative");
+
+            // гарантируем, что выходное значение не будет превышать допустимое значение для double,
+            // в противном случае -передаем сообщение (2-ой параметр в контракте)
+
+            Contract.Ensures(Contract.ValueAtReturn(out square) < maxValue, "Input values are incorrect");
+
+            //вычисляем площадь по формуле Герона, чтобы не было череватой
+            // ошибками процедуры выяснения, кто их них гиппотенуза
+            // даже если явно назвать параметр "гиппотенуза"-есть вероятность ввода неправильных данных
+            double p = (a + b + c) * coefficient;
+            square = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+           
+        }
+
+    }
+}
