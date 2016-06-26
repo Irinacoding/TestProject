@@ -12,3 +12,7 @@ CUSTOMERS.cust_id = (SELECT PRODUCTS.cust_id
 		    SELECT cust_id
                     FROM PRODUCTS
                     WHERE (PRODUCTS.product='creme') AND (DATEPART(month,GETDATE())));
+
+
+
+IMPORTANT!!!!!
