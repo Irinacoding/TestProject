@@ -2,9 +2,7 @@ using System;
 using System.Diagnostics.Contracts;
 
 namespace TriangleSquare
-{ /// <summary>
-  /// Ётот класс содержит функцию дл€ вычислени€ площади треугольника
- /// </summary>
+{ 
    
     public static class TriangleSquare
     {
@@ -15,19 +13,16 @@ namespace TriangleSquare
         
         public static void TriangleSquareCalculate (double a,  double b, double c, out double square)
         {
-            //провер€ем  входное значение на соответствие 
+            
             Contract.Requires( a > 0, "This value cann't be 0 or negative");
             Contract.Requires(b > 0, "This value cann't be 0 or negative");
             Contract.Requires(c > 0, "This value cann't be 0 or negative");
 
-            // гарантируем, что выходное значение не будет превышать допустимое значение дл€ double,
-            // в противном случае -передаем сообщение (2-ой параметр в контракте)
+           
 
             Contract.Ensures(Contract.ValueAtReturn(out square) < maxValue, "Input values are incorrect");
 
-            //вычисл€ем площадь по формуле √ерона, чтобы не было череватой
-            // ошибками процедуры вы€снени€, кто их них гиппотенуза
-            // даже если €вно назвать параметр "гиппотенуза"-есть веро€тность ввода неправильных данных
+            
             double p = (a + b + c) * coefficient;
             square = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
            
