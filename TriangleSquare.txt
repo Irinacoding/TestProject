@@ -11,12 +11,7 @@ namespace TriangleSquare
        
         const  double coefficient= 0.5;
         const double maxValue = Double.MaxValue;
-        /// <summary>
-        /// Метод вычисления площади
-        /// </summary>
-        /// <param name="a">Одно из значений катетов</param>
-        /// <param name="b">Одно из значений катетов</param>
-        /// <param name="square"> Значение площади</param>
+       
         
         public static void TriangleSquareCalculate (double a,  double b, double c, out double square)
         {
